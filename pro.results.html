@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote Results</title>
+    <style>
+        body {
+            background-color: #282c34;
+            color: #61dafb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 80vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        #main {
+            text-align: center;
+            background-color: #20232a;
+            padding: 20px;
+            border-radius: 10px;
+            height: 500px;
+            width:350px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .result {
+            margin: 10px 0;
+        }
+        .b {
+            display: grid;
+            text-shadow: 0px 1px 3px rgba(248, 7, 7, 0.7);
+        }
+        .result span {
+            font-size: 24px;
+            color: #fa1ab7;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #fbeb0c;
+            border: none;
+            border-radius: 5px;
+            color: #20232a;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #6aa0b9;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <h1 style="color: red;">Vote Results</h1>
+        <div class="result">
+            <h2 class="b">JavaScript: <span id="count1">0</span></h2>
+        </div>
+        <div class="result">
+            <h2 class="b">Python: <span id="count2">0</span></h2>
+        </div>
+        <div class="result">
+            <h2 class="b">Java: <span id="count3">0</span></h2>
+        </div>
+        <div class="result">
+            <h2 class="b">React JS: <span id="count4">0</span></h2>
+        </div>
+        <div class="result">
+            <h2 class="b">Node JS: <span id="count5">0</span></h2>
+        </div>
+        <button class="back-button" onclick="goBack()">Back to Voting</button>
+    </div>
+
+    <script>
+        function updateVoteCounts() {
+            const languages = ['javascript', 'python', 'java', 'reactjs', 'nodejs'];
+
+            languages.forEach((language, index) => {
+                let voteCount = localStorage.getItem(language + 'Votes');
+                voteCount = voteCount ? parseInt(voteCount) : 0;
+                document.getElementById('count' + (index + 1)).innerText = voteCount;
+            });
+        }
+
+        function goBack() {
+            window.location.href = "prologin.html";
+        }
+
+        window.onload = function() {
+            updateVoteCounts();
+        }
+    </script>
+</body>
+</html>

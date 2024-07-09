@@ -1,0 +1,177 @@
+
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vote</title>
+    <link rel="stylesheet" href="./projectui.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2c3e50;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        #main {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            
+        }
+        .header h1 {
+            font-size:1.5 em;
+            color: #f39c12;
+        }
+        .a {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 15px;
+            background-color: #34495e;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+        .a h1 {
+            margin: 0;
+            font-size: 1.5em;
+            flex: 1;
+            text-align: left;
+        }
+        .a button {
+            background-color: #069efc;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .a button:hover {
+            background-color: #15fe04;  
+            /* box-shadow: 1px 1px 3px 3px rgb(3, 233, 249); */
+        }
+        .a:hover {
+            background-color: #272743;
+        }
+        .results-button {
+            display: block;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .results-button a {
+            background-color: #04fb20;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+        .results-button a:hover {
+            background-color: #faf60c;
+            color:black;
+        }
+        h3{color: hsl(58, 98%, 50%)}
+        h3:hover{color: #15fe04;}
+        
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div id="userInfo" style="margin-bottom: 20px; text-align: center;"></div>
+        <h3 >What is your favorite programming language?</h3>
+        <div class="header">
+            <h1 id="headingText">Please cast your vote</h1>
+        </div>
+        
+        <div class="a">
+            <h1 id="lang1">JavaScript</h1> 
+            <button id="btn1" onclick="vote('javascript', 'lang1')">VOTE</button>
+        </div>
+        
+        <div class="a">
+            <h1 id="lang2">Python</h1>
+            <button id="btn2" onclick="vote('python', 'lang2')">VOTE</button>
+        </div>
+
+        <div class="a">
+            <h1 id="lang3">Java</h1>
+            <button id="btn3" onclick="vote('java', 'lang3')">VOTE</button>
+        </div>
+
+        <div class="a">
+            <h1 id="lang4">c++</h1>
+            <button id="btn4" onclick="vote('reactjs', 'lang4')">VOTE</button>
+        </div>
+
+        <!-- <div class="a">
+            <h1 id="lang5">Node JS</h1>
+            <button id="btn5" onclick="vote('nodejs', 'lang5')">VOTE</button>
+        </div> -->
+
+        <div class="results-button">
+            <a href="./pro.results.html">View Results</a>
+        </div>
+    </div>
+
+    <script>
+        function vote(language, elementId) {
+            if (localStorage.getItem('hasVoted') === 'true') {
+                alert('You have already voted!');
+                return;
+            }
+
+            localStorage.setItem('hasVoted', 'true');
+
+            let voteCount = localStorage.getItem(language + 'Votes');
+            voteCount = voteCount ? parseInt(voteCount) + 1 : 1;
+            localStorage.setItem(language + 'Votes', voteCount);
+
+            let element = document.getElementById(elementId);
+            element.style.color = "aqua";
+
+            const mainHeading = document.getElementById("headingText");
+            mainHeading.innerHTML = `Your vote is for ${language}`;
+            mainHeading.setAttribute("style", "color:orange;");
+
+            disableButtons();
+        }
+
+        function disableButtons() {
+            let buttons = document.querySelectorAll('button');
+            buttons.forEach(button => {
+                button.disabled = true;
+            });
+        }
+
+        window.onload = function() {
+            const storedEmail = localStorage.getItem('email');
+            const userInfo = document.getElementById('userInfo');
+            
+            if (!storedEmail) {
+                alert('You need to login first.');
+                window.location.href = "prologin.html"; 
+            } else {
+                userInfo.innerText = `Welcome: ${storedEmail}`;
+            }
+
+            if (localStorage.getItem('hasVoted') === 'true') {
+                disableButtons();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            margin: 0;
+        }
+        .main {
+            border: 2px solid;
+            height: 420px;
+            width: 300px;
+            display: grid;
+            border: 2px ridge blue;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            background-image: url("https://wallpapercave.com/wp/wp2912337.jpg");
+            background-size: cover;
+            box-shadow: 0 0 3px 1px rgb(41, 181, 209);
+        }
+        .b {
+            background-color: rgb(160, 59, 232);
+            border: 1px solid;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        h1 {
+            color: rgb(249, 8, 28);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <h1>Enter Name</h1>
+        <form class="row g-3" id="loginForm">
+            <div class="col-md-6">
+                <label for="email" class="aa">Name:</label><br>
+                <input type="text" class="aa" id="email" required>
+            </div><br>
+            <div class="col-md-6">
+                <label for="password" class="form-label">Password:</label><br>
+                <input type="password" class="form-control" id="password" required>
+            </div><br>
+            <div>
+                <input type="submit" value="voting page" style="background-color: blueviolet; height: 30px; width: 170px;">
+            </div><br>
+                <br>
+                Don't have an account? <br><a href="http://127.0.0.1:3000/project js/ni.html">Sign up</a><br>
+        </form>
+    </div>
+    <script>
+        const loginF=document.getElementById('loginForm');
+        loginF.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (email && password) {
+                localStorage.setItem('email', email);
+                localStorage.setItem('password', password);
+                localStorage.setItem('hasVoted', 'false');
+                alert('Login successful!');
+                window.location.href = "projectui.html"; 
+            } else {
+                alert('Please enter  email and password');
+            }
+        });
+
+        // window.onload = function() {
+        //     const storedEmail = localStorage.getItem('email');
+        //     const storedPassword = localStorage.getItem('password');
+            
+           
+        // }
+    </script>
+</body>
+</html>

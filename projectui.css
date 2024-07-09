@@ -1,0 +1,73 @@
+body{
+  background-color: rgb(6, 0, 0);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+#main{
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    height: 755px;
+    width:500px;
+    /* display: grid;
+    align-items: center; */
+    background-color: rgb(1, 9, 9);
+   box-shadow:1px 1px 5px 1px  rgb(88, 160, 135); 
+}
+#headingText{
+    display: flex;
+    align-items: center ;
+    justify-content: center;
+    justify-content: center;
+    border: 1px solid;
+    height: 50px;
+    width:400px;
+    color: aqua;
+    background-color: rgb(2, 5, 0);
+    box-shadow:1px 1px 5px 2px  rgb(100, 76, 10); 
+ }
+
+button{
+     width:80px;
+     height: 35px;
+     border-radius: 30px;
+     color: rgb(220, 89, 19);
+     background-color: rgba(0, 2, 3, 0.957);
+     cursor: pointer;
+     border:2px solid rgb(0, 145, 255);
+     box-shadow: 0px 0px 8px 2px rgb(7, 79, 222);
+     
+     /* border-top-right-radius: 20px;
+     border-bottom-right-radius: 20px; */
+}
+.a{
+  border:1px solid rgb(36, 42, 204);
+
+  display:flex;
+  /* grid-template-columns: repeat( auto auto); */
+  justify-content:space-around; 
+  align-items: center;
+  margin:20px;
+  height:65px;
+  width:360px;
+  /* border-radius: 100px; */
+  color:rgb(192, 139, 224);
+  background-color :rgb(27, 7, 7);
+  box-shadow:1px 2px 5px 2px  rgb(54, 16, 90);
+}
+#inp8 ,#inp7 ,#inp6 ,#inp5,#inp1 {
+  border:2px solid ;
+  height:20px;
+  width:20px;
+  border-radius: 20px;
+  background-color: rgb(246, 80, 15);
+  box-shadow: 1px 1px 5px 1px rgb(66, 35, 13);
+}
+a{
+  text-decoration: none;
+  /* color: whitesmoke; */
+}
+
